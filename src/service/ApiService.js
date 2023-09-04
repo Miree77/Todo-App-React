@@ -2,10 +2,10 @@ import { API_BASE_URL } from "../api-config";
 
 export function call(api, method, request) {
   let options = {
-    Headers: new Headers({
+    headers: new Headers({
       "Content-Type": "application/json",
     }),
-    url: API_BASE_URL,
+    url: API_BASE_URL + api,
     method: method,
   };
 
@@ -14,9 +14,11 @@ export function call(api, method, request) {
     options.body = JSON.stringify(request);
   }
 
+  console.log(options);
+
   return fetch(options.url, options)
     .then((response) => {
-      if (response.status === 2000) {
+      if (response.status === 200) {
         return response.json();
       }
     })

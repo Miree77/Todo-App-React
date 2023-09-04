@@ -1,4 +1,4 @@
-import { DeleteOutline, DeleteOutlined } from "@mui/icons-material";
+import { DeleteOutlined } from "@mui/icons-material";
 import {
   Checkbox,
   IconButton,
@@ -20,8 +20,9 @@ const Todo = (props) => {
   };
 
   const turnOnReadOnly = (e) => {
-    if (e.key === "Enter") {
+    if (e.key === "Enter" && readOnly === false) {
       setReadOnly((readOnly) => true);
+      editItem(item);
     }
   };
 
@@ -30,13 +31,12 @@ const Todo = (props) => {
   };
 
   const editEventHandler = (e) => {
-    item.title = e.target.value;
-    editItem();
+    setItem((item) => ({ ...item, title: e.target.value }));
   };
 
   const checkboxEventHanlder = (e) => {
     item.done = e.target.checked;
-    editItem();
+    editItem(item);
   };
 
   return (
