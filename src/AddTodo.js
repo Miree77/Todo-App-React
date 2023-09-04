@@ -7,14 +7,25 @@ const AddTodo = (props) => {
   const addItem = props.addItem;
 
   const onInputChange = (e) => {
-    setItem({ title: e.target.value });
-    console.log(item);
-    //console.log(e.target.value);
+    //setItem({ title: e.target.value });
+
+    //console.log(item);
+    setItem((prevState) => ({
+      ...prevState,
+      title: e.target.value,
+    }));
+    //console.log(item);
   };
 
   const onButtonClick = () => {
     addItem(item);
-    console.log(item);
+    //console.log(item);
+  };
+
+  const enterKeyEventHandler = (e) => {
+    if (e.key === "Enter") {
+      onButtonClick();
+    }
   };
 
   return (
@@ -25,6 +36,7 @@ const AddTodo = (props) => {
           fullWidth
           onChange={onInputChange}
           value={item.title}
+          onKeyDown={enterKeyEventHandler}
         ></TextField>
       </Grid>
       <Grid xs={1} md={1} item>
