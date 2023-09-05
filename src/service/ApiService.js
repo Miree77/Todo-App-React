@@ -32,3 +32,16 @@ export function call(api, method, request) {
       console.log(error);
     });
 }
+
+export function signin(userDTO) {
+  //console.log(userDTO);
+
+  return call("/auth/signin", "POST", userDTO).then((response) => {
+    console.log("response: ", response);
+    if (response.token) {
+      window.location.href = "/";
+    }
+
+    //alert("로그인 토큰: " + response.token);
+  });
+}

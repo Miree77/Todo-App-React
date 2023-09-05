@@ -3,6 +3,7 @@ import React from "react";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import Login from "./Login";
 import App from "./App";
+import "./index.css";
 
 function Copyright() {
   return (
