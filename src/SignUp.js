@@ -1,16 +1,18 @@
-import { Container, TextField, Typography, Grid, Button } from "@mui/material";
 import React from "react";
-import { signin } from "./service/ApiService";
+import { Container, Grid, Typography, TextField, Button } from "@mui/material";
+import { signup } from "./service/ApiService";
 import { Link } from "react-router-dom";
 
-const Login = () => {
+const SingUp = () => {
   const handleSubmit = (event) => {
     event.preventDefault();
     const data = new FormData(event.target);
     const username = data.get("username");
     const password = data.get("password");
 
-    signin({ username: username, password: password });
+    signup({ username: username, password: password }).then((response) => {
+      window.location.href = "/";
+    });
   };
 
   return (
@@ -18,7 +20,7 @@ const Login = () => {
       <Grid container spacing={2}>
         <Grid item xs={12}>
           <Typography component="h1" variant="h5">
-            로그인
+            계정 생성
           </Typography>
         </Grid>
       </Grid>
@@ -32,7 +34,8 @@ const Login = () => {
               id="username"
               label="아이디"
               name="username"
-              autoComplete="username"
+              autoComplete="fname"
+              autoFocus
             />
           </Grid>
           <Grid item xs={12}>
@@ -43,17 +46,20 @@ const Login = () => {
               id="password"
               label="패스워드"
               name="password"
+              type="password"
               autoComplete="current-password"
             />
           </Grid>
           <Grid item xs={12}>
             <Button type="submit" fullWidth variant="contained" color="primary">
-              로그인
+              계정 생성
             </Button>
           </Grid>
+        </Grid>
+        <Grid container justify="flex-end">
           <Grid item>
-            <Link to="/signup" variant="body2">
-              계정이 없습니까? 여기서 가입하세요.
+            <Link to="/login" variant="body2">
+              이미 계정이 있습니까? 로그인하세요
             </Link>
           </Grid>
         </Grid>
@@ -62,4 +68,4 @@ const Login = () => {
   );
 };
 
-export default Login;
+export default SingUp;
