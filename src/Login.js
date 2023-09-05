@@ -14,17 +14,17 @@ const Login = () => {
 
   return (
     <Container component="main" maxWidth="xs" style={{ marginTop: "8%" }}>
-      <Grid Container spacing={2}>
+      <Grid container spacing={2}>
         <Grid item xs={12}>
           <Typography component="h1" variant="h5">
             로그인
           </Typography>
         </Grid>
       </Grid>
-      <form noValidata onSubmit={handleSubmit}>
+      <form noValidate onSubmit={handleSubmit}>
         {" "}
         {/* submit 버튼을 누르면 handleSubmit 실행 */}
-        <Grid Container spacing={2}>
+        <Grid container spacing={2}>
           <Grid item xs={12}>
             <TextField
               variant="outlined"
