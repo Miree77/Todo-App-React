@@ -21,6 +21,9 @@ function App() {
   useEffect(() => {
     call("/todo", "GET", null).then((response) => {
       setItems(response.data);
+
+      console.log(response);
+
       setLoading((loading) => false);
     });
   }, []);

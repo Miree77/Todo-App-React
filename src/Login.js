@@ -1,6 +1,6 @@
 import { Container, TextField, Typography, Grid, Button } from "@mui/material";
 import React from "react";
-import { signin } from "./service/ApiService";
+import { signin, socialLogin } from "./service/ApiService";
 import { Link } from "react-router-dom";
 
 const Login = () => {
@@ -11,6 +11,10 @@ const Login = () => {
     const password = data.get("password");
 
     signin({ username: username, password: password });
+  };
+
+  const handleSocialLogin = (provider) => {
+    socialLogin(provider);
   };
 
   return (
@@ -49,6 +53,18 @@ const Login = () => {
           <Grid item xs={12}>
             <Button type="submit" fullWidth variant="contained" color="primary">
               로그인
+            </Button>
+          </Grid>
+          <Grid item xs={12}>
+            <Button
+              fullWidth
+              variant="contained"
+              style={{ backgroundColor: "#000" }}
+              onClick={() => {
+                handleSocialLogin("github");
+              }}
+            >
+              github 로그인
             </Button>
           </Grid>
           <Grid item>

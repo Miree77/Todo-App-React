@@ -27,8 +27,8 @@ export function call(api, method, request) {
       } else if (response.status === 403) {
         window.location.href = "/login"; // redirect
       } else {
-        Promise.reject(response);
-        throw Error(response);
+        //Promise.reject(response);
+        //throw Error(response);
       }
     })
     .catch((error) => {
@@ -59,4 +59,15 @@ export function signout() {
 
 export function signup(userDTO) {
   return call("/auth/signup", "POST", userDTO);
+}
+
+export function socialLogin(provider) {
+  const frontendUrl = window.location.protocol + "//" + window.location.host;
+
+  window.location.href =
+    API_BASE_URL +
+    "/auth/authorize/" +
+    provider +
+    "?redirect_url=" +
+    frontendUrl;
 }

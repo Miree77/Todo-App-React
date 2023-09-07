@@ -5,6 +5,7 @@ import Login from "./Login";
 import App from "./App";
 import "./index.css";
 import SingUp from "./SignUp";
+import SocialLogin from "./SocialLogin";
 
 function Copyright() {
   return (
@@ -24,6 +25,7 @@ function AppRouter() {
           <Route path="/" element={<App />} />
           <Route path="login" element={<Login />} />
           <Route path="signup" element={<SingUp />} />
+          <Route path="sociallogin" element={<SocialLogin />} />
         </Routes>
       </BrowserRouter>
       <Box mt={5}>
